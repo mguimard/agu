@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 import { NavComponent } from "./nav/nav.component";
 
 @Component({
@@ -11,4 +11,5 @@ import { NavComponent } from "./nav/nav.component";
 })
 export class AppComponent {
   title = 'meteo';
+
 }

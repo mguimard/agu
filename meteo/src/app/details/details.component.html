@@ -1,4 +1,36 @@
-<button mat-flat-button>Retour aux résultats</button>
-<h1>Détails pour BREST</h1>
+<div>
+    <button routerLink="/" mat-flat-button>Retour aux résultats</button>
+    <br /><br />
+</div>
 
-{{ data | json }}
+@if(name && data){
+
+<mat-card appearance="outlined">
+    <mat-card-header>
+        <mat-card-title>{{ name }} </mat-card-title>
+        <mat-card-subtitle>En ce moment... {{ data.current.weather_code | weatherCode }}</mat-card-subtitle>
+        <mat-card-subtitle>Température courrante : {{ data.current.temperature_2m }}°C</mat-card-subtitle>
+    </mat-card-header>
+</mat-card>
+<br>
+
+<mat-card appearance="outlined">
+    <mat-card-header>
+        <mat-card-title>Prévisions</mat-card-title>
+        <mat-card-subtitle>A 7 jours</mat-card-subtitle>
+        <mat-card-subtitle>
+
+            @for(time of data.daily.time; track time; let idx = $index){
+            <p>{{ time | day }} :
+                {{ data.daily.weather_code[idx] | weatherCode}} avec
+                {{ data.daily.temperature_2m_max[idx] }}°C max
+            </p>
+            }
+
+        </mat-card-subtitle>
+    </mat-card-header>
+</mat-card>
+
+
+
+}

@@ -12,6 +12,7 @@ import { SearchComponent } from "../search/search.component";
 import { FavoritesComponent } from "../favorites/favorites.component";
 import { HomeComponent } from "../home/home.component";
 import { DetailsComponent } from "../details/details.component";
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -28,7 +29,9 @@ import { DetailsComponent } from "../details/details.component";
     SearchComponent,
     FavoritesComponent,
     HomeComponent,
-    DetailsComponent
+    DetailsComponent,
+    RouterOutlet,
+    RouterLink
 ]
 })
 export class NavComponent {

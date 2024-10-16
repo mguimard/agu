@@ -1,4 +1,5 @@
-<h1>Home</h1>
-
 <app-search></app-search>
-<app-results [results]="data"></app-results>
+
+@if(data && data.length){
+    <app-results [results]="data"></app-results>
+}

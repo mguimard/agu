@@ -4,12 +4,12 @@ import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import { Result } from '../result';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-results',
   standalone: true,
-  imports: [MatButtonModule, MatTableModule],
-  providers:[HttpClient],
+  imports: [MatButtonModule, MatTableModule, RouterLink],
   templateUrl: './results.component.html',
   styleUrl: './results.component.css'
 })
