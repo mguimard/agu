@@ -1,0 +1,8 @@
+<p>home works!</p>
+
+<input type="text" #search />
+<button (click)="doRequest(search.value)">Click me</button>
+
+@for(result of results; track result.id) {
+    <p>{{ result.name }} </p>
+}

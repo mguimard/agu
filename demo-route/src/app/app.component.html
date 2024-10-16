@@ -1,0 +1,13 @@
+<p>Menu navgation</p>
+<ul>
+  <li> <a [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/">Home</a>  </li>
+  <li> <a [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/" [queryParams]="{ville: 'Brest'}">Home?ville=Brest</a>  </li>
+  <li> <a [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/users">Users</a>  </li>
+  <li> <a [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/users/">Users/</a>  </li>
+  <li> <a [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/users/123" [queryParams]="{foo: 'bar'}">Users/123 ? foo bar</a>  </li>
+  <li> <a [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/users/123" [queryParams]="{foo: 'baz'}">Users/123 ? foo baz</a>  </li>
+  <li> <a [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" [routerLink]="['/users', 321]">Users/321</a>  </li>
+</ul>
+
+
+<router-outlet></router-outlet>
