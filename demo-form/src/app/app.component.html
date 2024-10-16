@@ -1,0 +1,15 @@
+<form #f="ngForm">
+  <input [(ngModel)]="username" type="text" required name="whatever" minlength="3"/>
+  <button type="submit">Envoyer</button>
+</form>
+
+<button (click)="log(f)">LOG</button>
+
+@if(!f.valid) {
+  <p>Fais un effort pour valider le formulaire</p>
+  @if(!f.controls['whatever'].valid) {
+    <p>Indice: c'est le username qu'il faut corriger</p>
+  }
+} @else {
+  <p>Bravo</p>
+}
