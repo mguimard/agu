@@ -1,0 +1,15 @@
+Hello world
+
+@if(nbVoitures == 3) {
+  <p>La course est finie</p>
+}
+
+<app-compteur [nbVoitures]="nbVoitures"></app-compteur>
+
+<app-voiture
+ [peutDemarrer]="debutCourse" 
+ (passeLaLigne)="nbVoitures = nbVoitures + 1">
+</app-voiture>
+
+<app-voiture [peutDemarrer]="debutCourse" (passeLaLigne)="nbVoitures = nbVoitures + 1"></app-voiture>
+<app-voiture [peutDemarrer]="debutCourse" (passeLaLigne)="nbVoitures = nbVoitures + 1"></app-voiture>
