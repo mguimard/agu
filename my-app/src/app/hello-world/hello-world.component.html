@@ -1,0 +1,18 @@
+<p>hello-world works!</p>
+<p> i = {{ i }}  @if(i % 2 == 0){ i est pair } @else { i est impair }</p>
+<button (click)="i = i + 1">CLICK ME</button>
+<input type="text" #myString />
+<p>{{ myString.value }} </p>
+{{ medor.age + 10 }}
+{{ f() }}
+
+
+
+@switch (i) {
+    @case(20) {
+        <h2>BOOOM</h2>
+    }
+    @default {
+        <h3>Pas booom</h3>
+    }
+}

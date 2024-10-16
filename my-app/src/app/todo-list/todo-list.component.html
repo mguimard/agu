@@ -1,0 +1,5 @@
+<p>todo-list works!</p>
+@for (todo of todos; track $index) {
+    {{ todo }}
+    <app-todo-item [text]="todo"></app-todo-item>
+}
