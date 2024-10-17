@@ -15,6 +15,5 @@ import { RouterLink } from '@angular/router';
 })
 export class ResultsComponent {
   @Input() results!:Result[];
-
   displayedColumns: string[] = ['name', 'country_code'];
 }

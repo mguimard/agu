@@ -4,6 +4,9 @@ import {  ResultResponse } from './result';
 import { firstValueFrom } from 'rxjs';
 import { Forecast } from './forecast';
 
+/**
+ * @description Util service class that exposes some webservices
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -11,8 +14,11 @@ export class MeteoService {
 
   http = inject(HttpClient)
 
-  constructor() { }
-
+  /**
+   * @description Search world cities by name
+   * @argument cityName a city name to search for
+   * @returns a Promise on a ResultResponse
+   */
   async searchByCity(cityName: string) : Promise<ResultResponse>{
     return firstValueFrom(this.http.get<ResultResponse>(`https://geocoding-api.open-meteo.com/v1/search?name=${cityName}`))
   }

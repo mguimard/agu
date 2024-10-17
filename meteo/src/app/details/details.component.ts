@@ -16,31 +16,27 @@ import { MeteoService } from '../meteo.service';
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })
-export class DetailsComponent implements OnInit, OnDestroy {
+export class DetailsComponent implements OnDestroy {
   
   data!: Forecast;
   name!: string;
   meteoService = inject(MeteoService)
   route = inject(ActivatedRoute)
+  sub = this.route.queryParams.subscribe(this.onRouteChanged.bind(this))
+  
+  private async onRouteChanged(params: Params){
+    let lat = params['latitude']
+    let lon = params['longitude']
+    this.name = params['name']
 
-  ngOnInit(): void {
-    this.route.queryParams.subscribe(async (params:Params) => {
-      let lat = params['latitude']
-      let lon = params['longitude']
-      this.name = params['name']
-
-      if(lat && lon){
-        // todo : try/catch
-        this.data = await this.meteoService.getForecast(lat,lon)
-      }
-    })
+    if(lat && lon){
+      // todo : try/catch
+      this.data = await this.meteoService.getForecast(lat,lon)
+    }
   }
 
   ngOnDestroy(): void {
-    // todo : clean
+    this.sub.unsubscribe()
   }
-  
-
-
 
 }

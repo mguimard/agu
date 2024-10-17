@@ -1,6 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DetailsComponent } from './details.component';
+import { MeteoService } from '../meteo.service';
+import { provideHttpClient } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
+
+class FakeMeteoService extends MeteoService {
+
+}
 
 describe('DetailsComponent', () => {
   let component: DetailsComponent;
@@ -8,7 +14,12 @@ describe('DetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DetailsComponent]
+      imports: [DetailsComponent],
+      providers: [
+        provideHttpClient(),
+        provideRouter([]),
+        {provide: MeteoService, useClass: FakeMeteoService}
+      ]
     })
     .compileComponents();
 

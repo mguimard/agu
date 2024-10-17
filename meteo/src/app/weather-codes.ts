@@ -1,4 +1,4 @@
-export const WeatherCodes = (code: number) => {
+export const WeatherCodes = (code: number) : {name: string} => {
     switch (code) {
         case 0: return { name: 'Beau' };
         case 1: return { name: 'A peu près beau' };

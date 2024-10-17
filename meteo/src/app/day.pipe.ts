@@ -7,9 +7,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class DayPipe implements PipeTransform {
 
   transform(value: number): string {
-    
-    return new Date(value * 1000).toLocaleDateString();
 
+    return new Date(value * 1000).toLocaleDateString()
   }
 
 }
