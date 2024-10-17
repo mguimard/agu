@@ -2,6 +2,9 @@
     <button routerLink="/" mat-flat-button>Retour aux résultats</button>
     <br /><br />
 </div>
+@if(error){
+    <p>Ooops: {{ error.message }}</p>
+}
 
 @if(name && data){
 

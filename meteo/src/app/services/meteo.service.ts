@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import {  ResultResponse } from './result';
+import {  ResultResponse } from '../model/result';
 import { firstValueFrom } from 'rxjs';
-import { Forecast } from './forecast';
+import { Forecast } from '../model/forecast';
 
 /**
  * @description Util service class that exposes some webservices

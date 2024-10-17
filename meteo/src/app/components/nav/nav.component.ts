@@ -10,8 +10,8 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { SearchComponent } from "../search/search.component";
 import { FavoritesComponent } from "../favorites/favorites.component";
-import { HomeComponent } from "../home/home.component";
-import { DetailsComponent } from "../details/details.component";
+import { HomeComponent } from "../../views/home/home.component";
+import { DetailsComponent } from "../../views/details/details.component";
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({

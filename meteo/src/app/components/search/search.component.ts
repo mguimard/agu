@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, Input} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {FormsModule} from '@angular/forms';
@@ -14,6 +14,6 @@ import { Router } from '@angular/router';
   styleUrl: './search.component.css'
 })
 export class SearchComponent {
-  value = ''
+  @Input()  value: string = ''
   router = inject(Router);
 }

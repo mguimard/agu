@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DetailsComponent } from './details.component';
-import { MeteoService } from '../meteo.service';
+import { MeteoService } from '../../services/meteo.service';
 import { provideHttpClient } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 

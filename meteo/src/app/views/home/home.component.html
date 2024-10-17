@@ -1,0 +1,14 @@
+<app-search [value]="currentSearch"></app-search>
+
+@if (error) {
+    <p>Ooops: {{error.message}} </p>
+}
+
+@if(data && data.length){
+    <p>{{data.length}} résultats pour {{ currentSearch }}</p>
+    <app-results [results]="data"></app-results>
+}
+
+@if(!data && currentSearch){
+    <p>Aucun résultat pour {{ currentSearch }}</p>
+}
