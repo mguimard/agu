@@ -6,6 +6,11 @@ export interface Result {
     country_code: string;
 }
 
+export interface ResultResponse {
+    results: Result[]
+}
+
+
 /*
 
 {

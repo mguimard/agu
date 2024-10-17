@@ -1,0 +1,9 @@
+<p> {{ data | coupePatte | croquette:2 | json }} </p>
+
+<p>{{ todo$ | async | json }}</p>
+
+<ul>
+@for( todo of (todos$ | async); track $index ){
+  <li>{{ todo.title }}</li>
+}
+</ul>

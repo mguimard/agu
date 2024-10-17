@@ -2,8 +2,8 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { SearchComponent } from "../search/search.component";
 import { ResultsComponent } from "../results/results.component";
 import { Result } from '../result';
-import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Params } from '@angular/router';
+import { MeteoService } from '../meteo.service';
 
 @Component({
   selector: 'app-home',
@@ -14,30 +14,24 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  http = inject(HttpClient)
   route = inject(ActivatedRoute)
+  meteoService = inject(MeteoService)
 
   data: Result[] = [];
 
-  ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => {
-
-      
-
-      if (!params['city']) {
-        return
-      }
-
-      let url = `https://geocoding-api.open-meteo.com/v1/search?name=${params['city']}`
-     
-      this.http.get<{ results: Result[] }>(url).subscribe((res) => {
-        this.data = res.results;
-      })
-
-    })
+  ngOnInit() {
+    this.route.params.subscribe(this.onRouteChanged.bind(this))
   }
+
+  private async onRouteChanged(params: Params) {
+    if (params['city']) {
+      let res = await this.meteoService.searchByCity(params['city'])
+      this.data = res.results
+    }
+  }
+
   ngOnDestroy(): void {
-   // todo cleanup
+    // todo cleanup
   }
 
 }
