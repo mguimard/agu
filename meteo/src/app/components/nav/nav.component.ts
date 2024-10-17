@@ -13,6 +13,7 @@ import { FavoritesComponent } from "../favorites/favorites.component";
 import { HomeComponent } from "../../views/home/home.component";
 import { DetailsComponent } from "../../views/details/details.component";
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { NgxIndexedDBModule } from 'ngx-indexed-db';
 
 @Component({
   selector: 'app-nav',
@@ -32,6 +33,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
     DetailsComponent,
     RouterOutlet,
     RouterLink
+
 ]
 })
 export class NavComponent {
