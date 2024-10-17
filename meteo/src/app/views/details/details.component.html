@@ -6,11 +6,11 @@
     <p>Ooops: {{ error.message }}</p>
 }
 
-@if(name && data){
+@if(params['name'] && data){
 
 <mat-card appearance="outlined">
     <mat-card-header>
-        <mat-card-title>{{ name }} </mat-card-title>
+        <mat-card-title>{{ params['name'] }} </mat-card-title>
         <mat-card-subtitle>En ce moment... {{ data.current.weather_code | weatherCode }}</mat-card-subtitle>
         <mat-card-subtitle>Température courrante : {{ data.current.temperature_2m }}°C</mat-card-subtitle>
     </mat-card-header>
@@ -33,4 +33,9 @@
         </mat-card-subtitle>
     </mat-card-header>
 </mat-card>
+@if(!favoriteService.isFavorite(params['id'])){
+    <button mat-flat-button (click)="setAsFavorites()">Ajouter aux favoris</button>
+} @else {
+    <button mat-flat-button (click)="removeFromFavorites()">Supprimer des favoris</button>
+}
 }

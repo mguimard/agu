@@ -1,6 +1,6 @@
 <p>Favoris</p>
 <ul>
-    <li><a routerLink="Test">Brest</a></li>
-    <li>Brest</li>
-    <li>Brest</li>
+    @for(favorite of (favorites$ | async); track favorite.id){
+        <li><a routerLink="/details" [queryParams]="favorite">{{ favorite.name }}</a></li>
+    }
 </ul>

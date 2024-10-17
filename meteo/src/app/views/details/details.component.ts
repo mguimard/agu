@@ -9,6 +9,7 @@ import { DayPipe } from '../../pipes/day.pipe';
 import { MeteoService } from '../../services/meteo.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
+import { FavoriteService } from '../../services/favorite.service';
 
 @Component({
   selector: 'app-details',
@@ -18,31 +19,44 @@ import { Subscription } from 'rxjs';
   styleUrl: './details.component.css'
 })
 export class DetailsComponent implements OnInit, OnDestroy {
-
+ 
+  favoriteService = inject(FavoriteService)
   data!: Forecast;
-  name!: string;
   meteoService = inject(MeteoService)
   route = inject(ActivatedRoute)
   sub!: Subscription
   error: HttpErrorResponse | null = null
+  params!: Params
 
   ngOnInit(): void {
     this.sub = this.route.queryParams.subscribe(this.onRouteChanged.bind(this))
   }
 
   private async onRouteChanged(params: Params) {
-    let lat = params['latitude']
-    let lon = params['longitude']
-    this.name = params['name']
+    this.params = params;
 
-    if (lat && lon) {
+    if (params['latitude'] && params['longitude']) {
       try {
-        this.data = await this.meteoService.getForecast(lat, lon)
+        this.data = await this.meteoService.getForecast(params['latitude'], params['longitude'])
         this.error = null
       } catch (e: any) {
         this.error = e
       }
     }
+  }
+
+  setAsFavorites(){
+    this.favoriteService.setAsfavorite({
+      id: this.params['id'],
+      name: this.params['name'],
+      latitude: this.params['latitude'],
+      longitude: this.params['longitude'],
+      country_code: this.params['country_code']
+    })
+  }
+
+  removeFromFavorites(){
+    this.favoriteService.removeFromFavorites(this.params['id'])
   }
 
   ngOnDestroy(): void {
