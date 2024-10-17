@@ -1,0 +1,4 @@
+<p>display works!</p>
+@for(s of (data$ | async) ; track $index){
+    <p>{{ s }} </p>
+}
