@@ -6,12 +6,11 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { MeteoService } from '../../services/meteo.service';
 import { Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [SearchComponent, ResultsComponent, AsyncPipe],
+  imports: [SearchComponent, ResultsComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

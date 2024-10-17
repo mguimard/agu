@@ -3,7 +3,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { Forecast } from '../../model/forecast';
-import { JsonPipe } from '@angular/common';
 import { ActivatedRoute, Params, RouterLink } from '@angular/router';
 import { WeatherCodePipe } from '../../pipes/weather-code.pipe';
 import { DayPipe } from '../../pipes/day.pipe';
@@ -14,12 +13,11 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, MatTableModule, JsonPipe, WeatherCodePipe, DayPipe, RouterLink],
+  imports: [MatCardModule, MatButtonModule, MatTableModule, WeatherCodePipe, DayPipe, RouterLink],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })
 export class DetailsComponent implements OnInit, OnDestroy {
-
 
   data!: Forecast;
   name!: string;
