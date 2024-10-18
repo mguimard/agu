@@ -1,0 +1,28 @@
+stages:
+- test
+- build
+
+unit-tests:
+  stage: test
+  image: alpine:latest
+  script:
+    - apk add nodejs
+    - npm install -g @angular/cli
+    - ng test --code-coverage
+  artifacts:
+    paths:
+      - coverage/meteo
+  only: dev
+  
+app-build:
+  stage: build
+  image: alpine:latest
+  script:
+    - apk add nodejs
+    - npm install -g @angular/cli
+    - ng build
+  artifacts:
+    paths:
+      - dist/meteo/browser
+  only: master
+  

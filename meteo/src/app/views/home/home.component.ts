@@ -7,6 +7,7 @@ import { MeteoService } from '../../services/meteo.service';
 import { Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-home',
   standalone: true,

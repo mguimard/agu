@@ -5,10 +5,11 @@
 }
 
 @if(data && data.length){
-    <p>{{data.length}} résultats pour {{ currentSearch }}</p>
+    <p>{{data.length}} résultats pour <span data-cy="current-search">{{ currentSearch }}</span></p>
     <app-results [results]="data"></app-results>
 }
 
 @if(!data && currentSearch){
     <p>Aucun résultat pour {{ currentSearch }}</p>
 }
+

@@ -3,7 +3,10 @@
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Ville </th>
       <td mat-cell *matCellDef="let element"> 
-        <a [routerLink]="['/details']" [queryParams]="element">
+        <a 
+          data-cy="result-link"
+          [routerLink]="['/details']" 
+          [queryParams]="element">
         {{element.name}} </a>
       </td>
     </ng-container>

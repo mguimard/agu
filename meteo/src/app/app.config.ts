@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection, isDevMode } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -6,6 +6,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideHttpClient } from '@angular/common/http';
 
 import { NgxIndexedDBService, CONFIG_TOKEN , DBConfig} from 'ngx-indexed-db';
+import '@angular/compiler';
+import { provideServiceWorker } from '@angular/service-worker';
 
 const dbConfig: DBConfig  = {
   name: 'MyDb',
@@ -28,6 +30,9 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideHttpClient(),
     NgxIndexedDBService,
-    { provide: CONFIG_TOKEN, useValue: { [dbConfig.name]: dbConfig } }, 
+    { provide: CONFIG_TOKEN, useValue: { [dbConfig.name]: dbConfig } }, provideServiceWorker('ngsw-worker.js', {
+            enabled: !isDevMode(),
+            registrationStrategy: 'registerWhenStable:30000'
+          }), 
   ]
 };

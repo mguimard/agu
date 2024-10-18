@@ -1,6 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
-import { NgxIndexedDBService } from 'ngx-indexed-db';
+import { Component, inject } from '@angular/core';
 import { Result } from '../../model/result';
 import { FavoriteService } from '../../services/favorite.service';
 import { Observable } from 'rxjs';

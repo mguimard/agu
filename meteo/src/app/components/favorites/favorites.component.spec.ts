@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FavoritesComponent } from './favorites.component';
+import { FavoriteService } from '../../services/favorite.service';
+
+class FakeFavoriteService{}
 
 describe('FavoritesComponent', () => {
   let component: FavoritesComponent;
@@ -8,7 +11,8 @@ describe('FavoritesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FavoritesComponent]
+      imports: [FavoritesComponent],
+      providers:[{provide: FavoriteService, useValue : FakeFavoriteService}]
     })
     .compileComponents();
 

@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import {  ResultResponse } from '../model/result';
 import { firstValueFrom } from 'rxjs';
 import { Forecast } from '../model/forecast';
+import { environment } from '../../environments/environment.development';
 
 /**
  * @description Util service class that exposes some methods to interact with open-meteo.com
@@ -31,6 +32,10 @@ export class MeteoService {
    */
   async getForecast(lat : number, lon : number ) : Promise<Forecast> {
     return firstValueFrom(this.http.get<Forecast>(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&format=json&timeformat=unixtime`))
+  }
+
+  async getUsers(){
+    this.http.get(environment.serverUrl)
   }
 
 }
